@@ -1,6 +1,6 @@
 package com.udacity.sandwichclub.utils;
 
-/* Portions of code modified starting from udacity/sandwich-club-starter-code
+/* Portions of code modified from udacity/sandwich-club-starter-code
    and the following sources:
 
    Parsing JSON Array code modified from an example at
