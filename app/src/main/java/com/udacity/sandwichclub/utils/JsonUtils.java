@@ -1,12 +1,23 @@
 package com.udacity.sandwichclub.utils;
 
+/* Portions of code modified starting from udacity/sandwich-club-starter-code
+   and the following sources:
+
+   Parsing JSON Array code modified from an example at
+   https://www.tutorialspoint.com/android/android_json_parser.htm
+
+   Working with List<String> variables adapted from
+   https://stackoverflow.com/questions/13395114/how-to-initialize-liststring-object-in-java*/
+
 import android.util.Log;
 
 import com.udacity.sandwichclub.model.Sandwich;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
@@ -34,20 +45,27 @@ public class JsonUtils {
             image = baseJsonResponse.getString("image");
 
             // TODO Parse JSON Array to List<String>
-            // alsoKnownAs = (List<String>) alsoKnownAsArray.getString("alsoKnownAs");
-            // ingredients = (List<String>) response.getJSONObject("ingredients");
+            // Instantiate the List<String> variables
+            alsoKnownAs = new ArrayList<>();
+            ingredients = new ArrayList<>();
 
-            // Check if JSON was parsed to String variables correctly
-            Log.v(LOG_TAG,"mainName: " +mainName);
-            Log.v(LOG_TAG,"alsoKnownAs: "+alsoKnownAs);
-            Log.v(LOG_TAG,"placeOfOrigin: "+placeOfOrigin);
-            Log.v(LOG_TAG,"image: "+image);
-            Log.v(LOG_TAG,"ingredients: "+ingredients);
+            // Parson JSON Array to List<String> variables alsoKnownAs and ingredients
+            JSONArray alsoKnownAsArray = name.getJSONArray("alsoKnownAs");
+            JSONArray ingredientsArray = baseJsonResponse.getJSONArray("ingredients");
 
-        } catch (JSONException e) {
+            // looping through all alsoKnownAsArray sandwich names
+            for (int i = 0; i < alsoKnownAsArray.length(); i++) {
+                alsoKnownAs.add(alsoKnownAsArray.getString(i));
+            }
+            // looping through all ingredientsArray sandwich ingredients
+            for (int i = 0; i < ingredientsArray.length(); i++) {
+                ingredients.add(ingredientsArray.getString(i));
+            }
+
+        } catch (final JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the JSON results ", e);
         }
-        Sandwich sandwich = new Sandwich(mainName,alsoKnownAs, placeOfOrigin,description,image, ingredients);
+        Sandwich sandwich = new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
         return sandwich;
     }
 }

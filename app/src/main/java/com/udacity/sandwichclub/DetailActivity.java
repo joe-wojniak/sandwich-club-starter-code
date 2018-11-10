@@ -46,8 +46,21 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
 
+        Picasso.with(this)
+                .load(sandwich.getImage())
+                .into(ingredientsIv);
+
+        setTitle(sandwich.getMainName());
+    }
+
+    private void closeOnError() {
+        finish();
+        Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void populateUI(Sandwich sandwich) {
         TextView alsoKnownAsTextView = findViewById(R.id.also_known_tv);
         List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
         //alsoKnownAsTextView.setText(alsoKnownAs.get(1));
@@ -63,20 +76,6 @@ public class DetailActivity extends AppCompatActivity {
         TextView descriptionTextView = findViewById(R.id.description_tv);
         String description = sandwich.getDescription();
         descriptionTextView.setText(description);
-
-        Picasso.with(this)
-                .load(sandwich.getImage())
-                .into(ingredientsIv);
-
-        setTitle(sandwich.getMainName());
-    }
-
-    private void closeOnError() {
-        finish();
-        Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void populateUI() {
 
     }
 }
