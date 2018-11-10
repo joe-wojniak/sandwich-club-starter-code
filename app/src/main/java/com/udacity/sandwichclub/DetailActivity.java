@@ -1,5 +1,7 @@
 package com.udacity.sandwichclub;
 
+/* Portions of code modified from udacity/sandwich-club-starter-code*/
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -61,13 +63,26 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        TextView alsoKnownAsTextView = findViewById(R.id.also_known_tv);
-        List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
-        //alsoKnownAsTextView.setText(alsoKnownAs.get(1));
 
-        TextView ingredientsTextView = findViewById(R.id.ingredients_tv);
-        List<String> ingredients = sandwich.getIngredients();
-        //ingredientsTextView.setText(ingredients.get(1));
+        if (sandwich.getAlsoKnownAs() != null) {
+            TextView textView = findViewById(R.id.textView);
+            TextView alsoKnownAsTextView = findViewById(R.id.also_known_tv);
+
+            List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
+
+            // looping through all alsoKnownAs sandwich names and update alsoKnownAsTextView
+            for (int i = 0; i < alsoKnownAs.size(); i++) {
+                alsoKnownAsTextView.append(alsoKnownAs.get(i) + "\r\n");
+            }
+        }
+        if (sandwich.getIngredients() != null) {
+            TextView ingredientsTextView = findViewById(R.id.ingredients_tv);
+            List<String> ingredients = sandwich.getIngredients();
+            // looping through all sandwich ingredients and update ingredientsTextView
+            for (int i = 0; i < ingredients.size(); i++) {
+                ingredientsTextView.append(ingredients.get(i) + "\r\n");
+            }
+        }
 
         TextView originTextView = findViewById(R.id.origin_tv);
         String origin = sandwich.getPlaceOfOrigin();
@@ -76,6 +91,5 @@ public class DetailActivity extends AppCompatActivity {
         TextView descriptionTextView = findViewById(R.id.description_tv);
         String description = sandwich.getDescription();
         descriptionTextView.setText(description);
-
     }
 }

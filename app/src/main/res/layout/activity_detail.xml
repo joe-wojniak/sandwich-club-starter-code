@@ -71,18 +71,20 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_vertical_margin"
             android:paddingBottom="@dimen/activity_horizontal_margin" />
-
-        <ImageView
-            android:id="@+id/image_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/sandwich_picture_content_description"
-            android:maxWidth="@dimen/image_view_width"
-            android:maxHeight="@dimen/image_view_height"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:scaleType="centerCrop" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/sandwich_picture_content_description"
+        android:maxWidth="@dimen/image_view_width"
+        android:maxHeight="@dimen/image_view_height"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:scaleType="centerCrop" />
 </FrameLayout>

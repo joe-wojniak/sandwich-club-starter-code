@@ -35,8 +35,6 @@ public class JsonUtils {
         try {
             JSONObject baseJsonResponse = new JSONObject(json);
             JSONObject name = baseJsonResponse.getJSONObject("name");
-            //JSONArray alsoKnownAsArray = baseJsonResponse.getJSONArray("alsoKnownAs");
-            //JSONArray ingredientsArray = baseJsonResponse.getJSONArray("ingredients");
 
             //Parse JSON string to String variables for sandwich object
             mainName = name.getString("mainName");
@@ -44,12 +42,12 @@ public class JsonUtils {
             description = baseJsonResponse.getString("description");
             image = baseJsonResponse.getString("image");
 
-            // TODO Parse JSON Array to List<String>
+            // COMPLETE Parse JSON Array to List<String>
             // Instantiate the List<String> variables
             alsoKnownAs = new ArrayList<>();
             ingredients = new ArrayList<>();
 
-            // Parson JSON Array to List<String> variables alsoKnownAs and ingredients
+            // Parse JSON Array to List<String> variables: alsoKnownAs and ingredients
             JSONArray alsoKnownAsArray = name.getJSONArray("alsoKnownAs");
             JSONArray ingredientsArray = baseJsonResponse.getJSONArray("ingredients");
 
